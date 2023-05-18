@@ -1,4 +1,5 @@
 import React from "react";
+import Lists from "./Lists";
 
 class App extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class App extends React.Component {
     };
 
     getLists() {
-      fetch("http://localhost:5000/posts")
+      fetch("http://localhost:3000/posts")
       .then(res=>res.json())
       .then(result=>
         this.setState({
@@ -36,8 +37,9 @@ class App extends React.Component {
             >
               Get Lists
             </button>
-            {listTable}
+          
           </span>
+          {listTable}
         </div>
       );
     }
