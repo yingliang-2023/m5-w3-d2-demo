@@ -25,6 +25,7 @@ class App extends React.Component {
         };
 
     render(){
+      const listTable=this.state.loading?(<span>Loading Data...Please be patient.</span>):(<Lists alldata={this.state.alldata}/>);
       return ( 
         <div className="container">
           <span className="title-bar">
@@ -35,6 +36,7 @@ class App extends React.Component {
             >
               Get Lists
             </button>
+            {listTable}
           </span>
         </div>
       );
