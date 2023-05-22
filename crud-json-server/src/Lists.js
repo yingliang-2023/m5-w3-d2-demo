@@ -26,6 +26,7 @@ function Lists(props){
             </thead>
 
             <tbody>{listrows}</tbody>
+            
         </table>
     );
 }
