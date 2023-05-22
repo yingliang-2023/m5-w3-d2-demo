@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-function CreateList(props) {
+function DeleteList(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <React.Fragment>
-      <Button variant="primary" onClick={handleShow}>
-        Create New List
+      <Button
+        variant="primary"
+        onClick={(evt) => {
+          handleShow();
+          props.getList(evt, props.elementId);
+        }}
+      >
+        Delete
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>New List</Modal.Title>
+          <Modal.Title>Delete List</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
@@ -22,7 +28,7 @@ function CreateList(props) {
             placeholder="Title"
             name="title"
             value={props.singledata.title}
-            onChange={props.handleChange}
+            disabled={true}
             className="d-block my-3"
           />
           <input
@@ -30,22 +36,22 @@ function CreateList(props) {
             placeholder="Author"
             name="author"
             value={props.singledata.author}
-            onChange={props.handleChange}
+            disabled={true}
             className="d-block my-3"
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button varianr="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button
-            variant="primary"
-            onClick={() => {
+            varianr="primary"
+            onClick={(event) => {
               handleClose();
-              props.createList();
+              props.deleteList(event, props.elementId);
             }}
           >
-            Create
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -53,4 +59,4 @@ function CreateList(props) {
   );
 }
 
-export default CreateList;
+export default DeleteList;
